@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de CPF</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Calculadora de CPF</h1>
+        {% if error %}
+            <p class="error">{{ error }}</p>
+        {% endif %}
+        <form action="/calcular_cpf" method="post">
+            <label for="cpfInput">Digite os 9 primeiros dígitos do CPF:</label>
+            <input type="text" id="cpfInput" name="cpf_input" maxlength="9">
+            <button type="submit">Calcular CPF Completo</button>
+        </form>
+        {% if cpf_completo %}
+            <p class="result">CPF Completo: {{ cpf_completo }}</p>
+        {% endif %}
+    </div>
+</body>
+</html>
